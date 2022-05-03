@@ -30,7 +30,7 @@ public class RestApiController {
     // 왜냐하면 @AuthenticationPrincipal은 UserDetailsService에서 리턴될 때 만들어지기 때문이다.
 
     // 유저 혹은 매니저 혹은 어드민이 접근 가능
-    @GetMapping("/api/v1/user")
+    @GetMapping("/user")
     public String user(Authentication authentication) {
         PrincipalDetails principal = (PrincipalDetails) authentication.getPrincipal();
 
@@ -38,18 +38,18 @@ public class RestApiController {
     }
 
     // 매니저 혹은 어드민이 접근 가능
-    @GetMapping("/api/v1/manager/reports")
+    @GetMapping("/manager")
     public String reports() {
         return "<h1>reports</h1>";
     }
 
     // 어드민이 접근 가능
-    @GetMapping("/api/v1/admin/users")
+    @GetMapping("/admin")
     public List<User> users(){
         return userRepository.findAll();
     }
 
-    @PostMapping("/api/v1/join")
+    @PostMapping("/register")
     public String join(@RequestBody User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setRoles("ROLE_USER");
