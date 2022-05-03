@@ -1,4 +1,4 @@
-package jwt.jwt_study;
+package jwt.jwt_study.model.dto;
 
 import lombok.Data;
 @Data

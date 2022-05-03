@@ -2,10 +2,7 @@ package jwt.jwt_study.config;
 
 import jwt.jwt_study.config.jwt.JwtAuthenticationFilter;
 import jwt.jwt_study.config.jwt.JwtAuthorizationFilter;
-import jwt.jwt_study.filter.MyFilter1;
-import jwt.jwt_study.filter.MyFilter3;
 import jwt.jwt_study.repository.UserRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
