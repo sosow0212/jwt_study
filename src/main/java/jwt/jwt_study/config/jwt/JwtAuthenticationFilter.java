@@ -88,6 +88,9 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         System.out.println(jwtToken);
 
         response.addHeader(JwtProperties.HEADER_STRING, JwtProperties.TOKEN_PREFIX+jwtToken);
+
+        // /login 마치고 나면, 토큰을 body로 보내줌
+        response.getWriter().write(String.valueOf(jwtToken));
     }
 
 }

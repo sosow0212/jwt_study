@@ -21,7 +21,7 @@ public class RestApiController {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     // 모든 사람이 접근 가능
-    @GetMapping("home")
+    @GetMapping("/home")
     public String home() {
         return "<h1>home</h1>";
     }
@@ -34,7 +34,7 @@ public class RestApiController {
     public String user(Authentication authentication) {
         PrincipalDetails principal = (PrincipalDetails) authentication.getPrincipal();
 
-        return "<h1>user</h1>";
+        return "<h1>" + principal.getUser().getUsername() + "</h1>";
     }
 
     // 매니저 혹은 어드민이 접근 가능
@@ -50,7 +50,7 @@ public class RestApiController {
     }
 
     @PostMapping("/register")
-    public String join(@RequestBody User user) {
+    public String register(@RequestBody User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setRoles("ROLE_USER");
         userRepository.save(user);
